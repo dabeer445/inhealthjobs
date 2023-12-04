@@ -17,8 +17,6 @@ const restartButton = document.getElementById("restart-button");
 
 function displayResponse(response) {
   setTimeout(() => {
-    let audioQueue = [];
-
     if (response) {
       response.forEach((item, index, array) => {
         if (item.type === "speak" || item.type === "text") {
@@ -48,9 +46,6 @@ function displayResponse(response) {
           messageElement.innerHTML = wrappedMessage;
           chatWindow.appendChild(assistantWrapper);
 
-          if (item.payload.src) {
-            audioQueue.push(item.payload.src);
-          }
         } else if (item.type === "choice") {
           const buttonContainer = document.createElement("div");
           buttonContainer.classList.add("buttoncontainer");
@@ -93,26 +88,6 @@ function displayResponse(response) {
     });
 
     responseContainer.style.opacity = "1";
-
-    function playNextAudio() {
-      if (audioQueue.length === 0) {
-        // Logic when audio queue is empty...
-        return;
-      }
-      const audioSrc = audioQueue.shift();
-      let audio = new Audio(audioSrc);
-      audio.addEventListener("canplaythrough", () => {
-        audio.play();
-      });
-      audio.addEventListener("ended", () => {
-        playNextAudio();
-      });
-      audio.addEventListener("error", () => {
-        console.error("Error playing audio:", audio.error);
-        playNextAudio();
-      });
-    }
-    playNextAudio();
   }, 250);
 
   setTimeout(() => {
