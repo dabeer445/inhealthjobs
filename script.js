@@ -1,3 +1,4 @@
+const dabeer='dabeer'
 const typingIndicator = document.getElementById("typing-indicator");
 const uniqueId = generateUniqueId();
 const voiceflowRuntime = "general-runtime.voiceflow.com";
@@ -25,6 +26,8 @@ function displayResponse(response) {
           const taglineElement = document.createElement("div");
           taglineElement.classList.add("assistanttagline");
           taglineElement.textContent = "InHealth Jobs";
+
+
           chatWindow.appendChild(taglineElement);
 
           const assistantWrapper = document.createElement("div");
