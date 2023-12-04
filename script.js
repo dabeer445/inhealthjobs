@@ -1,4 +1,3 @@
-const dabeer='dabeerasdasdasd'
 const typingIndicator = document.getElementById("typing-indicator");
 const uniqueId = generateUniqueId();
 const voiceflowRuntime = "general-runtime.voiceflow.com";
@@ -129,7 +128,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
   chatContainer.style.height = `${window.innerHeight}px`;
   // Set the runtime, version and API key for the Voiceflow Dialog API
 
-  let audio = new Audio();
   //   const chatWindow = document.getElementById("chat-window");
 
   // Only call interact('#launch#') if there are no saved messages
@@ -182,11 +180,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
         // Fade out previous content
         responseContainer.style.opacity = "0";
 
-        // Check if any audio is currently playing
-        if (audio && !audio.paused) {
-          // If audio is playing, pause it
-          audio.pause();
-        }
         // Add user message to the chat window
         const taglineElement = document.createElement("div");
         taglineElement.classList.add("usertagline");
